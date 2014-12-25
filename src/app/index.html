@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css"/>
+    </head>
+    <body>
+        <header></header>
+        <section class="plot">
+            <div class="shadow" id="firstChild">
+                <div class="subtitle">
+                    <h2>Markdown</h2>
+                    <button class="button" onclick="saveMarkdown(); saveHtml();">Save</button>
+                </div>
+                <textarea onkeyup="getText()" id="myTextarea" class="text" placeholder="type your text" autofocus></textarea>
+                <button onclick="roundJob()" class="round" id="round"></button>
+            </div>
+            <div id="secondDiv">
+                <div class="subtitle">
+                    <h2>HTML</h2>
+                </div>
+                <div id="parsedTest" class="text">
+                </div>
+            </div>
+        </section>
+        <script src="app.js"></script>
+    </body>
+</html>
