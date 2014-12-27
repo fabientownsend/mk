@@ -76,14 +76,24 @@ var saveMarkdown = function() {
     var fs = require('fs');
     var markdownArticle = document.querySelector("#myTextarea").value;
     
-    // TODO
-    // we have to verify if the file exist
-    // if not, create it then save.
-    fs.writeFile('save/article.markdown', markdownArticle, function (err) {
+    var chooser = document.querySelector('#selectFile');
+    fs.writeFile(chooser.value, markdownArticle, function (err) {
         if (err) throw err;
         alert('It\'s saved!');
     });
+
 };
+
+/*
+var chooser = document.querySelector('#selectFile');
+chooser.addEventListener("change", function(evt) {
+        fs.writeFile(this.value, markdownArticle, function (err) {
+            if (err) throw err;
+            alert('It\'s saved!');
+        });
+    });
+}, false);
+*/
 
 var saveHtml = function() {
     var fs = require('fs');
