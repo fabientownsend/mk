@@ -63,17 +63,12 @@ textarea:focus, .round:focus {
 .text {
     padding: 15px;
 }
-input[type='file'] {
-//    opacity: 0 !important;
-    color: transparent;
-}
 .button {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0,0.26);
     color: black;
     background-color: #fafafa;
     float: right;
     //background-color: rgba(158, 158, 158, 0.185);
-    margin: 1em;
     border: none;
     line-height: 25px;
     border-radius: 3px;
@@ -82,6 +77,14 @@ input[type='file'] {
     max-width: 10em;
     overflow: hidden;
     height: 50px;
+    cursor: pointer;
+    float: right;
+}
+input[type='file'] {
+    color: transparent;
+    width: 155px;
+    float: right;
+    height: 60px;
 }
 #selectFile::-webkit-file-upload-button {
     visibility: hidden;
@@ -90,11 +93,9 @@ input[type='file'] {
     content: 'Save as';
     display: inline-block;
     cursor: pointer;
-    float: right;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0,0.26);
     color: black;
     background-color: #fafafa;
-    margin: 1em;
     border: none;
     line-height: 25px;
     border-radius: 3px;

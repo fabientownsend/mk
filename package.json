@@ -3,7 +3,7 @@
     "main": "src/app/index.html",
     "window": {
         "title": "Test-app",
-        "toolbar": false,
+        "toolbar": true,
         "frame": true,
         "min_width": 960,
         "min_height": 520,

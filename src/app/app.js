@@ -60,14 +60,35 @@ var getText = function() {
 };
 
 // Markdown and HTML saves
+
+var currentFile = '';
+
 var openFile = function() {
     // TODO
 };
 var saveAs = function() {
-    // TODO
+    var fs = require('fs');
+    var markdownArticle = document.querySelector("#myTextarea").value;
+    
+    var chooser = document.querySelector('#selectFile');
+    currentFile = chooser.value;
+    fs.writeFile(chooser.value, markdownArticle, function (err) {
+        if (err) throw err;
+        alert('It\'s saved!');
+    });
 };
 var save = function() {
-    // TODO
+    if (currentFile === '') {
+        return;
+    } else {
+        var fs = require('fs');
+        var markdownArticle = document.querySelector("#myTextarea").value;
+        
+        fs.writeFile(currentFile, markdownArticle, function (err) {
+            if (err) throw err;
+            alert('It\'s saved!');
+        });
+    }
 }
 
 // save data
