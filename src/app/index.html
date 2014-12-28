@@ -6,12 +6,12 @@
     </head>
     <body>
         <header>
-            <input onchange="saveMarkdown()" id="selectFile" type="file" nwsaveas="text.markdown" />
         </header>
         <section class="plot">
             <div class="shadow" id="firstChild">
                 <div class="subtitle">
                     <h2>Markdown</h2>
+                    <input onchange="saveMarkdown()" id="selectFile" type="file" nwsaveas="text.markdown" />
                     <button class="button" onclick="saveMarkdown(); saveHtml();">Save</button>
                 </div>
                 <textarea onkeyup="getText()" id="myTextarea" class="text" placeholder="type your text" autofocus></textarea>
