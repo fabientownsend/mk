@@ -64,7 +64,14 @@ var getText = function() {
 var currentFile = '';
 
 var openFile = function() {
-    // TODO
+    var fs = require('fs');
+    var chooser = document.querySelector('#openFile');
+    var textarea = document.querySelector('#myTextarea');
+    alert(chooser.value);
+    fs.readFile(chooser.value, {encoding: 'utf-8'}, function(err, data) {
+        if (err) alert(err);
+        textarea.textContent = data;
+    });
 };
 var saveAs = function() {
     var fs = require('fs');
@@ -89,42 +96,4 @@ var save = function() {
             alert('It\'s saved!');
         });
     }
-}
-
-// save data
-// https://github.com/rogerwang/node-webkit/wiki/File-dialogs
-var saveMarkdown = function() {
-    var fs = require('fs');
-    var markdownArticle = document.querySelector("#myTextarea").value;
-    
-    var chooser = document.querySelector('#selectFile');
-    fs.writeFile(chooser.value, markdownArticle, function (err) {
-        if (err) throw err;
-        alert('It\'s saved!');
-    });
-
-};
-
-/*
-var chooser = document.querySelector('#selectFile');
-chooser.addEventListener("change", function(evt) {
-        fs.writeFile(this.value, markdownArticle, function (err) {
-            if (err) throw err;
-            alert('It\'s saved!');
-        });
-    });
-}, false);
-*/
-
-var saveHtml = function() {
-    var fs = require('fs');
-    var htmlArticle = document.querySelector("#secondDiv").value;
-    
-    // TODO
-    // we have to verify if the file exist
-    // if not, create it then save.
-    fs.writeFile('save/article.html', htmlArticle, function (err) {
-        if (err) throw err;
-        alert('It\'s saved!');
-    });
 }
