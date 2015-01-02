@@ -1,5 +1,4 @@
-
-// render display
+// UI
 var roundJob = function() {
     var myElement = document.querySelector("#myTextarea");
     var myTextArea = document.querySelector("#firstChild");
@@ -61,39 +60,67 @@ var getText = function() {
 
 // Markdown and HTML saves
 
-var currentFile = '';
+var fs = require('fs');
+var app = {};
 
-var openFile = function() {
-    var fs = require('fs');
-    var chooser = document.querySelector('#openFile');
-    var textarea = document.querySelector('#myTextarea');
-    alert(chooser.value);
-    fs.readFile(chooser.value, {encoding: 'utf-8'}, function(err, data) {
-        if (err) alert(err);
-        textarea.textContent = data;
+// This is where session variable are stored.
+app.session = {
+    path: '',
+    data: ''
+};
+
+//
+// File Functions.
+//
+app.file = {};
+
+// Input:
+// Output:
+// Result:
+// Notes:
+app.file.open = function() {
+    app.session.path = document.querySelector('#openFile').value;
+    var target = document.querySelector('#myTextarea');
+
+    fs.readFile(app.session.path, {encoding: 'utf-8'}, function(err, content) {
+        if (err) {
+            alert(err);
+        }
+        app.session.data = content;
+        target.textContent = content;
     });
 };
-var saveAs = function() {
-    var fs = require('fs');
-    var markdownArticle = document.querySelector("#myTextarea").value;
-    
-    var chooser = document.querySelector('#selectFile');
-    currentFile = chooser.value;
-    fs.writeFile(chooser.value, markdownArticle, function (err) {
-        if (err) throw err;
+
+// Input:
+// Output:
+// Result:
+// Notes:
+app.file.saveAs = function() {
+    app.session.data = document.querySelector("#myTextarea").value;
+    app.session.path = document.querySelector('#selectFile').value;
+
+    fs.writeFile(app.session.path, app.session.data, function (err) {
+        if (err) {
+            throw err;
+        }
         alert('It\'s saved!');
     });
 };
-var save = function() {
-    if (currentFile === '') {
+
+// Input:
+// Output:
+// Result:
+// Notes:
+app.file.save = function() {
+    if (app.session.path === '') {
         return;
     } else {
-        var fs = require('fs');
-        var markdownArticle = document.querySelector("#myTextarea").value;
-        
-        fs.writeFile(currentFile, markdownArticle, function (err) {
-            if (err) throw err;
+        app.session.data = document.querySelector("#myTextarea").value;
+        fs.writeFile(app.session.path, app.session.data, function (err) {
+            if (err) {
+                throw err;
+            }
             alert('It\'s saved!');
         });
     }
-}
+};

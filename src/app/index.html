@@ -11,9 +11,9 @@
             <div class="shadow" id="firstChild">
                 <div class="subtitle">
                     <h2>Markdown</h2>
-                    <input onchange="openFile()" type="file" id="openFile" />
-                    <input onchange="saveAs()" id="selectFile" type="file" nwsaveas="text.markdown" />
-                    <button onclick="save()" id="save" class="button">Save</button>
+                    <input onchange="app.file.open()" type="file" id="openFile" />
+                    <input onchange="app.file.saveAs()" id="selectFile" type="file" nwsaveas="text.markdown" />
+                    <button onclick="app.file.save()" id="save" class="button">Save</button>
                 </div>
                 <textarea onkeyup="getText()" id="myTextarea" class="text" placeholder="type your text" autofocus></textarea>
                 <button onclick="roundJob()" class="round" id="round"></button>
