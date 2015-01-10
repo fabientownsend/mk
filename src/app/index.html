@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
-        <header>
+        <header id="header">
         </header>
         <section class="plot">
             <div class="shadow" id="firstChild">
@@ -16,7 +16,7 @@
                     <button onclick="app.file.save()" id="save" class="button">Save</button>
                 </div>
                 <textarea onkeyup="getText()" id="myTextarea" class="text" placeholder="type your text" autofocus></textarea>
-                <button onclick="roundJob()" class="round" id="round"></button>
+                <button onclick="app.ui.windowWidth()" class="round" id="round"></button>
             </div>
             <div id="secondDiv">
                 <div class="subtitle">

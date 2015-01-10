@@ -1,23 +1,3 @@
-// UI
-var roundJob = function() {
-    var myElement = document.querySelector("#myTextarea");
-    var myTextArea = document.querySelector("#firstChild");
-    var myElementParsed = document.querySelector("#secondDiv");
-    var myButton = document.querySelector(".round");
-
-    if(myElement.style.width == "50%") {
-        myButton.style.right = "7.7%";
-        myElement.style.width = "90%";
-        myTextArea.style.width = "90%";
-        myElementParsed.style.width = "10%";
-    } else {
-        myButton.style.right = "48%";
-        myElement.style.width = "50%";
-        myTextArea.style.width = "50%";
-        myElementParsed.style.width = "50%";
-    }
-}
-
 // Markdown parser
 var getText = function() {
 
@@ -89,6 +69,8 @@ app.file.open = function() {
         app.session.data = content;
         target.textContent = content;
     });
+
+    app.ui.displayHeader(app.session.path);
 };
 
 // Input:
@@ -96,8 +78,8 @@ app.file.open = function() {
 // Result:
 // Notes:
 app.file.saveAs = function() {
-    app.session.data = document.querySelector("#myTextarea").value;
     app.session.path = document.querySelector('#selectFile').value;
+    app.session.data = document.querySelector("#myTextarea").value;
 
     fs.writeFile(app.session.path, app.session.data, function (err) {
         if (err) {
@@ -105,6 +87,8 @@ app.file.saveAs = function() {
         }
         alert('It\'s saved!');
     });
+
+    app.ui.displayHeader(app.session.path);
 };
 
 // Input:
@@ -124,3 +108,38 @@ app.file.save = function() {
         });
     }
 };
+
+//
+// UI Functions.
+//
+app.ui = {};
+
+
+// Input:
+// Output:
+// Result:
+// Notes:
+app.ui.displayHeader = function(src) {
+    var target = document.querySelector('#header');
+    target.textContent = src;
+};
+
+app.ui.windowWidth = function() {
+    var myElement = document.querySelector("#myTextarea");
+    var myTextArea = document.querySelector("#firstChild");
+    var myElementParsed = document.querySelector("#secondDiv");
+    var myButton = document.querySelector(".round");
+
+    if(myElement.style.width == "50%") {
+        myButton.style.right = "7.7%";
+        myElement.style.width = "90%";
+        myTextArea.style.width = "90%";
+        myElementParsed.style.width = "10%";
+    } else {
+        myButton.style.right = "48%";
+        myElement.style.width = "50%";
+        myTextArea.style.width = "50%";
+        myElementParsed.style.width = "50%";
+    }
+}
+
